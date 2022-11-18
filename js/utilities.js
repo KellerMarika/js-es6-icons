@@ -46,6 +46,18 @@
     }
     return array;
 }
+/**FUNZIONE RINTRACCIA ELEMENTO
+* questa funzione controlla se all'interno di un array è presente il valore n ricercato (correlazione di inclusione) e ritorna vero o falso
+* @param {array} array 
+* @param {number || string} n utile con this.dataset.x!
+* @returns true o false
+*/
+function checkElement(array, n) {
+    if (array.includes(n)) {
+        return true
+    } else {
+        return false
+    }
+}
 
-
-export {createElement}
+export {createElement, checkElement}
