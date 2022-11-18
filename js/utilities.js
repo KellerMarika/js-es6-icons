@@ -60,4 +60,4 @@ function checkElement(array, n) {
     }
 }
 
-export {createElement, checkElement}
+export {createElement}

@@ -1,13 +1,13 @@
 
 import { iconsArray } from "./data.js";
-import { createElement, checkElement } from "./utilities.js"
+import { createElement } from "./utilities.js"
 /* console.log(iconsArray); */
 
 /*************** ELEMENTI ***************************************/
 //qua select ++
 const maxConainer = document.getElementById("max-container");
 //qua select ++
-const cardContainer = document.querySelector("#max-container .row");
+const cardContainer = document.querySelector("#max-container #card-container");
 
 /*************** CREATE CARDS ***********************************/
 
@@ -17,22 +17,24 @@ const colors = [
     , "purple"
 ]
 
-/* filter creo array recupero type */
+/***************CREATE CARDS IN FILTER FUNCTION **************************************************/
 
 const newArray = []
-let types = iconsArray.filter((element, i, array) => {
+let selectOptions=[]
 
+let iconTypes
+
+iconTypes = iconsArray.filter((element, i, array, CreateCard) => {
+
+    //inizio creazione delle card cardContainer.append(col>card>i+h5)
 
     const cardCol = createElement("div", "col", "p-3");
     const card = createElement("div", "card", "text-center");
 
-
     const iconClass1 = element.prefix + element.name
-    // console.log(element.prefix+element.name)
-
     const iconClass2 = element.prefix + "solid"
     const cardIcon = createElement("i", iconClass1, iconClass2);
-    cardIcon.style.color = element.color
+    cardIcon.style.color = element.color//to change
 
     const cardTitle = createElement("h5", "title", "text-uppercase");
     cardTitle.innerHTML = element.name
@@ -41,20 +43,23 @@ let types = iconsArray.filter((element, i, array) => {
     card.append(cardIcon, cardTitle);
     cardContainer.append(cardCol);
 
+
+    /* generazione di un array contenente solo un elemento per tipo*/
+
     if (!newArray.includes(element.type)) {
+
         newArray.push(element.type);
-        console.log(newArray);
-        return true
+        return (newArray)
     }
 });
+console.log(iconTypes)
 
-console.log(types)
-/* 
-const editorsList = usersList.filter(function (element) {
-    return element.ruoloAziendale === "Chief Editor";
-  });
-  
-  // const editorsList2 = usersList.filter((element) => element.ruoloAziendale === "Chief Editor");
-  
-  console.log(developersList, editorsList);  */
+
+
+selectOptions= iconTypes.map((element, i, array) => {
+    return element.type    
+});
+console.log("selectOption",selectOptions);
+
+
 
