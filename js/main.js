@@ -1,6 +1,6 @@
 
 import { iconsArray } from "./data.js";
-import { createElement } from "./utilities.js"
+import { createElement, generateArrayOfRandomString} from "./utilities.js"
 /* console.log(iconsArray); */
 
 /*************** ELEMENTI ***************************************/
@@ -55,7 +55,7 @@ cardCol_El.dataset.type= `${element.type} all`
         return (newArray)
     }
 });
-console.log(iconTypes);
+//console.log(iconTypes);
 
 
 /***************CREATE SELECT OPTION **************************************************/
@@ -130,4 +130,6 @@ function activeCards(selectValue) {
         activatedCards[i].classList.toggle("d-none",false);
     });
 }
+const esadecimalColorCaracters= "0123456789abcdef"
 
+console.log(generateArrayOfRandomString(6,esadecimalColorCaracters, iconsArray.length));
