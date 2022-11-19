@@ -1,0 +1,36 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #dddddd;
+}
+
+header {
+    background-color: #29b1dd
+}
+
+.logo {
+    margin-top: 10px;
+    background-color: white;
+        color: #29b1dd
+}
+
+#select-container {
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+}
+
+select {
+    max-width: 400px;
+}
+
+
+.card {
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card i {
+    font-size: 2rem;
+}
