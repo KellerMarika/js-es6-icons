@@ -27,6 +27,11 @@ select {
     max-width: 400px;
 }
 
+select option{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 400 !important;
+
+}
 
 .card {
     aspect-ratio: 16/9;
