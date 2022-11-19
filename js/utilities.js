@@ -22,7 +22,7 @@ function createElement(tagEl, class1, class2) {
 
 
 
-/************* FUNZIONE GENERA STRINGA RANDOM PARTENDO DA UNA STRINGA DI CARATTERI AMMESSI*****************/
+/************* FUNZIONE GENERA STRINGA RANDOM PARTENDO DA UNA STRINGA DI CARATTERI AMMESSI (anche ripetuti)*****************/
 
 /**Sorteggia a caso una stringa di caratteri di lunghezza =lenght partendo da una stringa composta da tutti i caratteri accettati (caracters)
  * 
@@ -37,41 +37,33 @@ function sortRandomString(randomStringlength, stringAdmittedCaracters) {
     return result;
 }
 
-
-/************* FUNZIONE GENERA AFFAY DI STRINGHE RANDOM *****************/
-/**crea un array di lenght=arraylenghtNumbr, i cui elementi sono stringhe randomiche di lunghezza = randomStringlength. le stringhe vengono generate attraverso una funzione interna che sorteggia i caratteri di cui saranno composte partendo da una stringa di riferimento che contiene tutti i caratteri ammessi: stringAdmittedCaracters
+/************* FUNZIONE GENERA AFFAY OF RANDOM COLOR *****************/
+/**crea un array di lenght=arraylenghtNumbr, i cui elementi sono stringhe randomiche uniche di caratteri esadecimali compresi tra (0,9) e (a,f), precedute dal simbolo # 
+ * (possono essere adoperati per personalizzare la proprietà element.style.color=array[i])
  * 
- * @param {number} randomStringlength lunghezza desiderata delle stringhe random che comporranno l'array in uscita
- * @param {string} stringAdmittedCaracters stringa composta da tutti i caratteri fra cui è possibile sorteggiare per comporre le stringhe random che comporranno l'array in uscita
- * @param {number} arrayLenghtNumber numero di elementi di cui si desidera popolare l'array
- * @return 
+ * @param {number} arrayLenghtNumber numero di elementi di cui si desidera popolare l'array in uscita
+ * @return  array
  */
- function generateArrayOfRandomString(randomStringlength, stringAdmittedCaracters, arrayLenghtNumber) {
+ function generateArrayOfRandomColors(arrayLenghtNumber) {
 
     //creo un array indefinito
     const array = []
+    //stringa dei caratteri esadecimali che compongono i colori
+    const esadecimalColorCaracters = "0123456789abcdef"
     //console.log(array);
     //comincio un ciclo while che si arresta solo quando avrà finito di creare un array di lunghezza ="arrayLenghtNumber" composto da numeri unici
 
     while (array.length < arrayLenghtNumber) {
-        //richiamo la funzione random number che dovrebbe prendere i valori dagli argomenti
-        const randomString = sortRandomString(randomStringlength, stringAdmittedCaracters)
-        //console.log(randomNumber);
+        //richiamo la funzione random string a cui passo gli argomenti necessari
+        const randomString = "#"+sortRandomString(6, esadecimalColorCaracters)
+             //perchè venga inserito nell'array devo controllare di non aver già inserito un valore identico nei cicli precedenti
 
-        //perchè venga inserito nell'array devo controllare di non aver già inserito un numero identico nei cicli precedenti
-
-        //se non è incluso nell'array includilo
-        if (!array.includes(randomString)) {
-            array.push(randomString);
-        }
+        //i codici colore ammettono ripetizioni di caratteri
+        array.push(randomString);
     }
     return array;
 }
-
-
-
-
-export { createElement,generateArrayOfRandomString }
+export { createElement, generateArrayOfRandomColors }
 
 /* modificare la struttura dati fornita e valorizzare la proprietà "color" in modo dinamico: generare in modo casuale un codice colore, sapendo che la notazione esadecimale è formata dal simbolo "#" seguito da 6 caratteri alfanumerici compresi tra 0 e 9 e A e F. */
 

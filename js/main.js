@@ -1,6 +1,6 @@
 
 import { iconsArray } from "./data.js";
-import { createElement, generateArrayOfRandomString} from "./utilities.js"
+import { createElement, generateArrayOfRandomColors } from "./utilities.js"
 /* console.log(iconsArray); */
 
 /*************** ELEMENTI ***************************************/
@@ -22,7 +22,10 @@ const colors = [
 const newArray = []
 let iconTypes
 let unactivatedCards
-let activatedCards 
+let activatedCards
+let unactivatedIcons
+//array di colori random
+const iconColors = generateArrayOfRandomColors(iconsArray.length);
 
 iconTypes = iconsArray.filter((element, i, array, CreateCard) => {
 
@@ -30,7 +33,7 @@ iconTypes = iconsArray.filter((element, i, array, CreateCard) => {
 
     const cardCol_El = createElement("div", "col", "p-3");
     //aggiungiamo un dataset "type" che comprende sia la tipologia dell'icona, sia la stringa "all" che le accomuna tutte (prima option di select)
-cardCol_El.dataset.type= `${element.type} all`
+    cardCol_El.dataset.type = `${element.type} all`
 
 
     const card_El = createElement("div", "card", "text-center");
@@ -38,8 +41,8 @@ cardCol_El.dataset.type= `${element.type} all`
     const iconClass1 = element.prefix + element.name
     const iconClass2 = element.prefix + "solid"
     const cardIcon_El = createElement("i", iconClass1, iconClass2);
-    cardIcon_El.style.color = element.color//to change
-
+    //cardIcon_El.style.color = element.color//to change
+    cardIcon_El.style.color= iconColors[i]
     const cardTitle_El = createElement("h5", "title", "text-uppercase");
     cardTitle_El.innerHTML = element.name
 
@@ -112,12 +115,26 @@ function filter() {
 
 function disactiveCards(selectValue) {
     //recupero tutte le col a parte quelle corrispondenti alla option selezionata e le colloco in un array
+   
+
 
     unactivatedCards = document.querySelectorAll(`[data-type]:not([data-type*="${selectValue}"])`);
-/*     unactivatedCards = document.querySelectorAll(`.col:not(.${selectValue})`); */
+
+
+    //per rigenerare ogni volta il colore delle cards disattivate una volta riattuvate (non indispensabie)
+    let newArrayColors= generateArrayOfRandomColors(unactivatedCards.length);
+    unactivatedIcons = document.querySelectorAll(`[data-type]:not([data-type*="${selectValue}"]) i`);
+
+
+
+
+    /*     unactivatedCards = document.querySelectorAll(`.col:not(.${selectValue})`); */
     //ciclo sull'arrat delle col da disattivare
     unactivatedCards.forEach((element, i) => {
         unactivatedCards[i].classList.toggle("d-none", true);
+
+        //per rigenerare ogni volta il colore delle cards disattivate una volta riattuvate (non indispensabie)
+        unactivatedIcons[i].style.color=newArrayColors[i]
     });
 }
 
@@ -127,9 +144,9 @@ function activeCards(selectValue) {
     activatedCards = document.querySelectorAll(`[data-type*="${selectValue}"]`);
     //ciclo sull'arrat delle col da disattivare
     activatedCards.forEach((element, i) => {
-        activatedCards[i].classList.toggle("d-none",false);
+        activatedCards[i].classList.toggle("d-none", false);
     });
 }
-const esadecimalColorCaracters= "0123456789abcdef"
 
-console.log(generateArrayOfRandomString(6,esadecimalColorCaracters, iconsArray.length));
+
+

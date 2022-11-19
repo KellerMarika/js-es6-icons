@@ -7,8 +7,12 @@ header {
     background-color: #29b1dd
 }
 
+h1{
+    font-family: 'Fredoka One', cursive;
+}
+
 .logo {
-    margin-top: 10px;
+   padding-top: 10px;
     background-color: white;
         color: #29b1dd
 }
