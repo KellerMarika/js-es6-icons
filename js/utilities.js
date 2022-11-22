@@ -13,15 +13,11 @@ function createElement(tagEl, class1, class2) {
     created_El.classList.add(class2);
     return created_El
 }
-
 //una stringa è un array di caratteri quindi non ho bisogno di fare questo:
 /*     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     const letters =["a","b","c","d","e","f"]; */
 
 //dovrebbe bastarmi fare così:
-
-
-
 /************* FUNZIONE GENERA STRINGA RANDOM PARTENDO DA UNA STRINGA DI CARATTERI AMMESSI (anche ripetuti)*****************/
 
 /**Sorteggia a caso una stringa di caratteri di lunghezza =lenght partendo da una stringa composta da tutti i caratteri accettati (caracters)
@@ -42,7 +38,7 @@ function sortRandomString(randomStringlength, stringAdmittedCaracters) {
  * (possono essere adoperati per personalizzare la proprietà element.style.color=array[i])
  * 
  * @param {number} arrayLenghtNumber numero di elementi di cui si desidera popolare l'array in uscita
- * @return  array
+ * @return  array di lenght=(arrayLenghtNumber) popolato da stringhe esadecimali di 6 cifre precedute da # (si possono impiegare per modificare la proprietà in linea element.style.color= array[i])
  */
  function generateArrayOfRandomColors(arrayLenghtNumber) {
 

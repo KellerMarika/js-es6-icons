@@ -155,17 +155,8 @@ function filterCards() {
 
     for (let i = 0; i < selectOptions.length; i++) {
         if (select_El.value === selectOptions[i]) {
-            disactiveCards(select_El.value)
-            activeCards(select_El.value)
-        } else if (select_El.value === selectOptions[i]) {
-            disactiveCards(select_El.value)
-            activeCards(select_El.value)
-        } else if (select_El.value === selectOptions[i]) {
-            disactiveCards(select_El.value)
-            activeCards(select_El.value)
-        } else if (select_El.value === selectOptions[i]) {
-            disactiveCards(select_El.value)
-            activeCards(select_El.value)
+            disactiveCards(select_El.value);
+            activeCards(select_El.value);
         }
     }
 }
@@ -207,6 +198,12 @@ function activeCards(selectValue) {
         activatedCards[i].classList.toggle("d-none", false);
     });
 }
+
+
+
+
+
+
 
 
 
